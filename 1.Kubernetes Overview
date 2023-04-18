@@ -1,0 +1,47 @@
+## Kubernetes Overview
+
+![](./img/overview.png)
+
+### 
+
+### Kubernetes Cluster
+
+서버한대는 Master, 다른서버는 Node 로 한 Master에 여러 node들이 연결된다. 이렇게 연결이 되면 하나의 쿠버네티스 클러스터라는 개념
+
+#### Master
+
+쿠버네티스의 전반적인 기능들을 컨트롤하는 역할
+
+#### node
+
+자원을 제공하는 역할로 만약 클러스터 전체 자원을 늘리고 싶으면 node를 추가하면 된다. 
+
+### NameSpace
+
+클러스터 안에 존재, 쿠버네티스 오브젝트들을 독립된 공간으로 분리되게 만들어줌
+
+### Pod
+
+쿠버네티스 최소 배포 단위, pod들에게 외부로부터 연결이 가능하도록 IP를 할당해주는 service 존재, 서로 다른 namespace에 있는 pod들에게는 연결불가
+
+pod안에는 여러 컨테이너들이 존재, 컨테이너 하나당 하나의 앱이 동작, pod에는 여러 앱들이 돌아갈 수 있음
+
+### Volume
+
+ data별도 저장, pod가 재생성되어 데이터가 날아가는 문제를 해결함.
+
+
+
+### Controller
+
+pod를 관리해주는 역할
+
+- **Replication Controller, ReplicaSet:** pod가 죽으면 이를 감지하여 다시 살림, pod의 갯수 조절
+
+- **Deployment:** 배포후의 pod들을 새버전으로 업그레이드, 문제가 생기면 롤백을 쉽게 하도록 도와줌
+
+- **DaemonSet:** 한 노드의 pod가 한개씩만 사용되도록 함
+
+- **CronJob:** pod가 특정 작업만 수행하고  종료시킬 수 있도록 함
+
+
